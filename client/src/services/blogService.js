@@ -1,6 +1,7 @@
+import { IP_LOCAL } from '@env'
 import axios from 'axios';
 import { Alert } from 'react-native';
-const BASE_URL = 'http://192.168.1.68:3001'; // Reemplazar con la URL de tu servicio REST
+const BASE_URL = 'http://'+IP_LOCAL+':3001'; // Reemplazar con la URL de tu servicio REST
 const API_VERSION = '/api/v1';
 const URL_API = BASE_URL + API_VERSION;
 

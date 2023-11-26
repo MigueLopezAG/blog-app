@@ -1,0 +1,56 @@
+En este repositorio podemos encontrar un ejercicio para la creacion de una aplicacion en React native que cuenta con las sifuientes funcionalidades:
+
+- Creacion de entradas para un blog que cuenta con los campos de: Titulo, Autor y Contenido, todos los campos son obligatorios y estan validados tanto en el cliente como en el servidor.
+- Muestra del listado de todas las entradas creadas por el usuario, donde en el campo del contenido se muestra unicamente los primeros setenta caracterres.
+- En el mismo listado se cuenta con un campo de busqueda capaz de filtrar por titulo, contenido o autor
+- El sistema es capaz de trabajar sin conexion, una vez que se pierde la conexion a internet se muestra una alerta anunciando la perdida de la conexion, 
+  el usuario es capaz de ver la ultima axtualizacion de las entradas del blog, si se intenta agregar una entrada sin conexion a internet se mostrara 
+  una alerta al usuario haciendo advertencia que esa accion no es posible sin conexion a internet 
+## Requisitos Previos
+
+Antes de comenzar, asegúrate de tener instalado lo siguiente:
+
+- [Node.js](https://nodejs.org/)
+- [React Native](https://reactnative.dev/docs/environment-setup)
+- [MongoDB](https://docs.mongodb.com/manual/installation/)
+
+Para ejecutar este proyecto como primer paso debemos clonalonar este repositorio:
+
+   ```bash
+   git clone https://github.com/MigueLopezAG/blog-app.git
+
+Una vez clonado el repositorio navegaremos al directorio del proyecto desde la terminal
+  cd blog-app
+
+una vez que estemos apuntando al directorio instalaremos las dependencias del servidor
+  cd server
+  npm install
+
+continuaremos configurando la conexion a la base de datos de MongoDB
+  -Copiaremos el archivo '.env.example' y renomblalo como '.env'
+
+en el archivo -env-example ya se encuentra configurada la URL para la conexion a MongoDB y el puerto en el que se expone el servidor que en este ejemplo se utiliza el puerto 3001
+
+Para iniciar el servidor utilizamos la siguiente instruccion:
+ npm start
+
+una vez que tengamos corriendo el servidor procedemos a iniciar el proyecto del cliente, para esto nos ubicamos en la ruta del proyecto blog-app en una nueva terminal 
+y accedemos a la carpeta cliente
+  cd client
+
+ya hubicados instalamos las dependencias del proyecto
+  npm install
+
+y continuamos con la configuracion para ejecutar el proyecto de manera local
+  -Copiamos el archivo '.env.example' y lo renombramos como '.env'
+
+En este archivo .env cambiamos la variable IP_LOCAL por la ip de nuestro equipo 
+  ipconfig
+
+una vez configurado las variables de entorno iniciaremos nuestro proyecto
+  npm strat
+
+para poder probar esta aplicacion es necesario un dispositivo movil con la aplicacion Expo Go, una vez iniciado nuestro cliente lo unico que debemos hacer es ejecutra la aplicacion Expo Go
+Leer el codigo QR generado al iniciar la aplicacion del cliente.
+
+Ahora ya seremos capaz de interactuar con esta aplicacion.

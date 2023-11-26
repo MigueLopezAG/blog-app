@@ -17,11 +17,11 @@ const EntryList = ({ entries, onPress, navigation }) => {
   });
 
   const renderItem = ({ item }) => (
-    <View style={entryListStyles.itemContainer} onStartShouldSetResponder={()=>{onPress(item)}}>
-      <Text style={entryListStyles.title} >{item.title}</Text>
+    <View style={entryListStyles.itemContainer}>
+      <Text style={entryListStyles.title} onPress={()=>{onPress(item)}}>{item.title}</Text>
       <Text style={entryListStyles.author}>{item.author}</Text>
       <Text style={entryListStyles.date}>{item.createdAt && item.createdAt.substring(0, 10)}</Text>
-      <Text style={entryListStyles.content}>{item.content}</Text>
+      <Text style={entryListStyles.content}  onPress={()=>{onPress(item)}}>{item.content}</Text>
     </View>
   );
 
@@ -38,7 +38,6 @@ const EntryList = ({ entries, onPress, navigation }) => {
       <TouchableOpacity onPress={goToAddEntry} style={entryListStyles.buttonStyle}>
         <Text style={entryListStyles.buttonText}>Agregar Entrada</Text>
       </TouchableOpacity>
-
       <View style={{ marginHorizontal: 10, marginBottom: 30 }}>
         <TextInput 
           style={entryListStyles.searchInput}
@@ -47,7 +46,6 @@ const EntryList = ({ entries, onPress, navigation }) => {
           onChangeText={(text) => setSearchText(text)} 
         />
       </View>
-
       <FlatList
         data={filteredEntries}
         keyExtractor={(item) => item.title}

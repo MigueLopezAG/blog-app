@@ -1,29 +1,29 @@
 import React, {useState, useEffect} from 'react';
 import { View, Alert } from 'react-native';
-//import { useSelector, useDispatch  } from 'react-redux';
+import { useSelector, useDispatch  } from 'react-redux';
 import EntryList from '../components/EntryList';
 import { useNetInfo } from "@react-native-community/netinfo";
 import { getEntries } from '../services/blogService';
+import { saveReduxEntries } from '../Redux/Entries/entriesAction';
 
 const HomeScreen = ({ navigation }) => {
 
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  //const storedEntries = useSelector((state) => state.entries);
-  //console.log("storedEntries", storedEntries)
+  const storedEntries = useSelector((state) => state.entries);
 
   const { isConnected } = useNetInfo();
-  console.log(" isCOnnected", isConnected)
-  const [entries, setEntries] = useState([{ id: 1, title: 'Título 1', author: 'Autor 1', date: '2023-11-13', content: 'Contenido largo...' }]);
+  const [entries, setEntries] = useState([]);
 
   useEffect(() => {
     const obtainEntries = async () =>{
       if (isConnected || isConnected === null) {
         const entriesResponse = await getEntries();
         setEntries(entriesResponse);
-        //dispatch(saveReduxEntries(entriesResponse));
+        dispatch(saveReduxEntries(entriesResponse));
       } else {
         Alert.alert("Se perdio la conexion a internet");
+        setEntries(storedEntries);
       }
     }
     obtainEntries();

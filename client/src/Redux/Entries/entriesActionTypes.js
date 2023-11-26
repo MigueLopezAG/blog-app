@@ -1,0 +1,1 @@
+export const SAVE_ENTRIES = "SAVE_ENTRIES";
